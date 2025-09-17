@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"> <!-- Added app namespace for SeekBarPreference -->
+
+    <PreferenceCategory android:title="Geofence Settings">
+
+        <EditTextPreference
+            android:key="geofence_radius"
+            android:title="Geofence Radius"
+            android:defaultValue="250"
+            android:inputType="number"
+            android:summary="Set the radius for geofence in meters (100-500)" />
+
+        <SwitchPreferenceCompat
+            android:key="alert_one_station_before"
+            android:title="Alert one station before"
+            android:defaultValue="false"
+            android:summary="Trigger alarm one station before destination" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Alarm Settings">
+
+        <SwitchPreferenceCompat
+            android:key="vibrate_alarm"
+            android:title="Vibrate Alarm"
+            android:defaultValue="true"
+            android:summary="Enable or disable vibration for alarm" />
+
+        <RingtonePreference
+            android:key="alarm_sound"
+            android:title="Alarm Sound"
+            android:defaultValue="content://settings/system/alarm_alert"
+            android:ringtoneType="alarm"
+            android:showDefault="true"
+            android:showSilent="false" />
+
+        <SeekBarPreference
+            android:key="alarm_volume"
+            android:title="Alarm Volume"
+            android:defaultValue="100"
+            android:max="100"
+            android:min="0"
+            app:showSeekBarValue="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
