@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bangkok Transit Alarm</string>
+    <string name="settings_alarm_sound_default">Default alarm sound</string>
+    <string name="settings_alarm_sound_unknown">Unknown ringtone</string>
 </resources>

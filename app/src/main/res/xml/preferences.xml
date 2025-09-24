@@ -27,13 +27,10 @@
             android:defaultValue="true"
             android:summary="Enable or disable vibration for alarm" />
 
-        <RingtonePreference
+        <Preference
             android:key="alarm_sound"
             android:title="Alarm Sound"
-            android:defaultValue="content://settings/system/alarm_alert"
-            android:ringtoneType="alarm"
-            android:showDefault="true"
-            android:showSilent="false" />
+            android:summary="Select the alarm ringtone" />
 
         <SeekBarPreference
             android:key="alarm_volume"
