@@ -26,13 +26,10 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8 // Changed to 1_8 for broader compatibility
-        targetCompatibility = JavaVersion.VERSION_1_8 // Changed to 1_8
+    kotlin {
+        jvmToolchain(8)
     }
-    kotlinOptions {
-        jvmTarget = "1.8" // Changed to 1.8
-    }
+    
 }
 
 dependencies {

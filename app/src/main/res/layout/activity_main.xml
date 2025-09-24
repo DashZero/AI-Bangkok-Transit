@@ -25,6 +25,8 @@
         android:hint="Search station"
         android:padding="8dp"
         android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        
         android:elevation="4dp"
         app:layout_constraintEnd_toStartOf="@+id/settingsButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
         android:clickable="true"
         android:focusable="true"
         android:src="@android:drawable/ic_media_play"

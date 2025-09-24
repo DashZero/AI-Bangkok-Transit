@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
     private val ACTIVITY_RECOGNITION_PERMISSION_REQUEST_CODE = 2
+    private val BACKGROUND_LOCATION_PERMISSION_REQUEST_CODE = 3
     private val PLAY_SERVICES_RESOLUTION_REQUEST = 9000
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,6 +119,12 @@ class MainActivity : AppCompatActivity() {
         mapView.setTileSource(TileSourceFactory.MAPNIK)
         mapView.setBuiltInZoomControls(true)
         mapView.setMultiTouchControls(true)
+        mapView.setPadding(
+            0,
+            resources.getDimensionPixelSize(R.dimen.map_top_padding),
+            0,
+            resources.getDimensionPixelSize(R.dimen.map_bottom_padding)
+        )
 
         val mapController = mapView.controller
         mapController.setZoom(10.0)
@@ -202,6 +209,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun requestBackgroundLocationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                    BACKGROUND_LOCATION_PERMISSION_REQUEST_CODE
+                )
+            }
+        }
+    }
+
     private fun requestActivityRecognitionPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)
@@ -242,6 +262,13 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Activity Recognition permission denied", Toast.LENGTH_SHORT).show()
                 }
             }
+            BACKGROUND_LOCATION_PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Background location permission granted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Background location permission denied", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -256,6 +283,15 @@ class MainActivity : AppCompatActivity() {
         ) {
             Toast.makeText(this, "Location permissions not granted. Cannot add geofence.", Toast.LENGTH_SHORT).show()
             requestLocationPermissions()
+            return
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            Toast.makeText(this, "Background location permission required for geofences.", Toast.LENGTH_LONG).show()
+            requestBackgroundLocationPermission()
             return
         }
 

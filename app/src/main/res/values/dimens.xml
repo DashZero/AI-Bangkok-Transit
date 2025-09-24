@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin_bottom">40dp</dimen>
+    <dimen name="map_top_padding">0dp</dimen>
+    <dimen name="map_bottom_padding">96dp</dimen>
+</resources>
