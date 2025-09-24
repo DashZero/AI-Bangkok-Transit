@@ -2,6 +2,7 @@ package com.example.bangkoktransitalarm
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import com.example.bangkoktransitalarm.data.StationDataLoader
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
@@ -128,6 +129,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addStationMarkers() {
+        val markerIcon = AppCompatResources.getDrawable(this, R.drawable.ic_station_marker)
         for (station in allStations) {
             val geoPoint = GeoPoint(station.geoLat.toDouble(), station.geoLng.toDouble())
             val marker = Marker(mapView)
@@ -135,6 +137,9 @@ class MainActivity : AppCompatActivity() {
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
             marker.title = station.nameEng
             marker.snippet = station.line
+            markerIcon?.constantState?.newDrawable()?.mutate()?.let { drawable ->
+                marker.icon = drawable
+            }
             marker.setOnMarkerClickListener { m, mv ->
                 Toast.makeText(this, "Selected: ${m.title} (${m.snippet})", Toast.LENGTH_LONG).show()
                 selectedStation = allStations.find { it.stationId == station.stationId }
