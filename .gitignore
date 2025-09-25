@@ -1,0 +1,32 @@
+# Gradle
+/.gradle/
+/.gradle/**/*
+/build/
+build/
+
+# Android Studio
+*.iml
+.idea/
+.DS_Store
+/local.properties
+.cxx/
+
+# Generated assets
+app/build/
+*/build/
+
+# Binary outputs
+*.apk
+*.ap_ 
+*.aab
+
+# Misc
+.externalNativeBuild/
+.log/
+/captures/
+/outputs/
+
+# Mapbox demo assets
+MapboxAndroidDemo/.gradle/
+MapboxAndroidDemo/build/
+MapboxAndroidDemo/local.properties

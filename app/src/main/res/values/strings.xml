@@ -2,4 +2,8 @@
     <string name="app_name">Bangkok Transit Alarm</string>
     <string name="settings_alarm_sound_default">Default alarm sound</string>
     <string name="settings_alarm_sound_unknown">Unknown ringtone</string>
+    <string name="search_station_hint">Search station</string>
+    <string name="start_alarm">Start Alarm</string>
+    <string name="settings_content_description">Open settings</string>
+    <string name="selected_station_message">Selected: %1$s (%2$s)</string>
 </resources>

@@ -14,7 +14,7 @@ class SearchResultsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StationViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(android.R.layout.simple_list_item_1, parent, false) // Simple layout for now
+            .inflate(R.layout.item_search_result, parent, false)
         return StationViewHolder(view)
     }
 
@@ -32,6 +32,6 @@ class SearchResultsAdapter(
     }
 
     class StationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val stationNameTextView: TextView = itemView.findViewById(android.R.id.text1)
+        val stationNameTextView: TextView = itemView.findViewById(R.id.searchResultText)
     }
 }
