@@ -444,7 +444,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isLocationEnabled(): Boolean {
-        val manager = getSystemService(LocationManager::class.java)
+        val manager = ContextCompat.getSystemService(this, LocationManager::class.java)
         return manager?.isProviderEnabled(LocationManager.GPS_PROVIDER) == true ||
             manager?.isProviderEnabled(LocationManager.NETWORK_PROVIDER) == true
     }
